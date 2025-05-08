@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "command": "npx tsc -p ${cwd}${pathSeparator}",
+            "type": "shell",
+            "label": "compile_ts"
+        },
+
+        {
+            "command": "npm i -g",
+            "type": "shell",
+            "label": "setup_commandline",
+            "dependsOn": [ "compile_ts" ]
+        },
+
+        {
+            "command": "node ${cwd}${pathSeparator}build${pathSeparator}index.js",
+            "label": "gdpm",
+            "type": "shell",
+            "dependsOn": [ "setup_commandline" ]
+        }
+    ]
+}

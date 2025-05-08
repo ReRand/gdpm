@@ -1,2 +1,2 @@
 # Godot Plugin Manager
-Simple godot plugin manager inspired by NPM
+Simple but effective godot plugin manager inspired by NPM
