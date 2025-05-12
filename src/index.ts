@@ -1,17 +1,21 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
-import * as boxen from 'boxen';
+(async () => {
 
-const greeting = chalk.white.bold("Building GDPM :>");
+    const chalk = (await import('chalk')).default;
+    const boxen = (await import('boxen')).default;
 
-const boxenOptions = {
- padding: 1,
- margin: 1,
- borderColor: "green",
- backgroundColor: "#555555"
-};
+    const greeting = chalk.white.bold("Built GDPM :>");
 
-const msgBox = boxen.default( greeting, boxenOptions );
+    const boxenOptions = {
+    padding: 1,
+    margin: 1,
+    borderColor: "green",
+    backgroundColor: "#555555"
+    };
 
-console.log(msgBox);
+    const msgBox = boxen( greeting, boxenOptions );
+
+    console.log(msgBox);
+
+})()
