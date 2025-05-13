@@ -2,13 +2,11 @@
 
 import { Command } from 'commander';
 
-type action = (this: Command, opts: { [key: string]: boolean }, ...args: any[]) => void;
-
 type command = {
     args: string,
     desc?: string,
     aliases: string[],
-    action: action,
+    action: (this: Command, ...args: any[]) => void,
     options: [
         {
             flags: string[],
@@ -17,13 +15,6 @@ type command = {
         }
     ]
 }
-
-/*
-function Action(func: action, opts: { [key: string]: boolean }, ...args: any[])
-{
-    func.call(this, opts, ...args);
-}
-*/
 
 (async () => {
     const fetch = (await import('node-fetch')).default;
@@ -49,9 +40,10 @@ function Action(func: action, opts: { [key: string]: boolean }, ...args: any[])
         }
     }
 
-    async function Install(this: Command, opts: { [key: string]: boolean }, name?: string)
+    async function Install(this: Command, name?: string)
     {
         console.log(name);
+        let opts = this.opts();
         opts
     }
 
